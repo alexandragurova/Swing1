@@ -1,4 +1,6 @@
-package com.alexandragurova.swing1;
+package com.alexandragurova.swing1.gui;
+
+import com.alexandragurova.swing1.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,22 +11,29 @@ import java.awt.event.KeyEvent;
 /**
  * Created by Gurova on 25.02.2015.
  * <p/>
- * Controller class
+ * Controller of GUI
  */
 public class MainFrame extends JFrame {
     private Toolbar toolbar;
     private TextPanel textPanel;
     private FormPanel formPanel;
+    private TablePanel tablePanel;
+
     private JFileChooser fileChooser;
+
+    private Controller controller;
 
     public MainFrame() {
         super("Hello Swing");
 
         setLayout(new BorderLayout());
 
+        controller = new Controller();
+
         toolbar = new Toolbar();
         formPanel = new FormPanel();
         textPanel = new TextPanel();
+        tablePanel = new TablePanel();
 
         fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new PersonFileFilter());
@@ -41,21 +50,27 @@ public class MainFrame extends JFrame {
 
         formPanel.setFormListener(new FormListener() {
             public void formEventOccured(FormEvent e) {
-                String name = e.getName();
-                String occupation = e.getOccupation();
-                int ageCategory = e.getAgeCategory();
-                String employCategory = e.getEmployCategory();
 
-
-                textPanel.appendText(name + ": " + occupation + ": " +
-                        ageCategory + ": " + employCategory + "\n");
+                controller.addPerson(e);
+                tablePanel.refresh();
+//                String name = e.getName();
+//                String occupation = e.getOccupation();
+//                int ageCategory = e.getAgeCategory();
+//                String employCategory = e.getEmployCategory();
+//
+//
+//                textPanel.appendText(name + ": " + occupation + ": " +
+//                        ageCategory + ": " + employCategory + "\n");
             }
         });
 //        toolbar.setTextPanel(textPanel);
 
+        tablePanel.setData(controller.getPeople());
+
         add(toolbar, BorderLayout.NORTH);
         add(formPanel, BorderLayout.WEST);
-        add(textPanel, BorderLayout.CENTER);
+//        add(textPanel, BorderLayout.CENTER);
+        add(tablePanel, BorderLayout.CENTER);
 
         setMinimumSize(new Dimension(500, 400));
         setSize(600, 500);

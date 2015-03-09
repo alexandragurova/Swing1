@@ -1,4 +1,4 @@
-package com.alexandragurova.swing1;
+package com.alexandragurova.swing1.gui;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;

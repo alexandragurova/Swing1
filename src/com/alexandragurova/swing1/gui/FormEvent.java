@@ -1,4 +1,4 @@
-package com.alexandragurova.swing1;
+package com.alexandragurova.swing1.gui;
 
 import java.util.EventObject;
 

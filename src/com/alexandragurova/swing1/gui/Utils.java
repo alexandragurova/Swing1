@@ -1,4 +1,4 @@
-package com.alexandragurova.swing1;
+package com.alexandragurova.swing1.gui;
 
 /**
  * Created by Gurova on 09.03.2015.
