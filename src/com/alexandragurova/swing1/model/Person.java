@@ -1,9 +1,11 @@
 package com.alexandragurova.swing1.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Gurova on 09.03.2015.
  */
-public class Person {
+public class Person implements Serializable{
 
     private static int idCounter = 0;
 

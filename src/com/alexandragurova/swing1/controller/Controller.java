@@ -3,6 +3,8 @@ package com.alexandragurova.swing1.controller;
 import com.alexandragurova.swing1.gui.FormEvent;
 import com.alexandragurova.swing1.model.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -67,5 +69,13 @@ public class Controller {
                 genderEnum);
 
         db.addPeople(person);
+    }
+
+    public void saveToFile(File file) throws IOException {
+        db.saveToFile(file);
+    }
+
+    public void loadFromFile(File file) throws IOException {
+        db.loadFromFile(file);
     }
 }
